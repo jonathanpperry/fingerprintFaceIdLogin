@@ -17,15 +17,15 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("I am modal:", this.isModal)
   }
 
   login() {
     this.faio.show({
-      clientId: "Fingerprint-Demo",
-      clientSecret: "password", // Only Android
-      localizedFallbackTitle: "Use Pin", // Only iOS
-      localizedReason: "Please authenticate" // Only iOS
+      title: 'Biometric Authentication', // (Android Only) | optional | Default: "<APP_NAME> Biometric Sign On"
+      subtitle: 'Coolest Plugin ever', // (Android Only) | optional | Default: null
+      description: 'Please authenticate', // optional | Default: null
+      fallbackButtonTitle: 'Use Backup', // optional | When disableBackup is false defaults to "Use Pin".
+      disableBackup: true,  // optional | default: false
     }).then(() => {
       if (this.isModal) {
         this.modalCtrl.dismiss();
